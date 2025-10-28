@@ -2,7 +2,7 @@ import { Inngest } from "inngest";
 import prisma from "../configs/prisma.js";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "Project-Management" });
+export const inngest = new Inngest({ id: "Project-Management-application" });
 
 
 // Inngest Function to save user data to a database
@@ -14,7 +14,7 @@ const syncUserCreation = inngest.createFunction(
         await prisma.user.create({
             data: {
                 id: data.id,
-                email: data?.email_addresses[0]?.email_addres,
+                email: data?.email_addresses[0]?.email_address,
                 name: data?.first_name+ " " + data?.last_name,
                 image: data?.image_url,
             }
@@ -29,7 +29,7 @@ const syncUserDeletion = inngest.createFunction(
     async ({ event })=>{
         const {data} = event
         await prisma.user.delete({
-            data: {
+            where: {
                 id: data.id,
             }
         })
