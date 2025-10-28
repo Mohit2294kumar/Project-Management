@@ -7,7 +7,7 @@ export const inngest = new Inngest({ id: "Project-Management-application" });
 
 // Inngest Function to save user data to a database
 const syncUserCreation = inngest.createFunction(
-    {id: 'sync-user-from-clerk'},
+    {id: 'Project-Management-sync-user-from-clerk'},
     {event: 'clerk/user.created'},
     async ({ event })=>{
         const {data} = event
@@ -24,7 +24,7 @@ const syncUserCreation = inngest.createFunction(
 
 // Inngest Function to delete user from database
 const syncUserDeletion = inngest.createFunction(
-    {id: 'delete-user-from-clerk'},
+    {id: 'Project-Management-delete-user-from-clerk'},
     {event: 'clerk/user.deleted'},
     async ({ event })=>{
         const {data} = event
@@ -38,7 +38,7 @@ const syncUserDeletion = inngest.createFunction(
 
 // Inngest Function to update user data in database
 const syncUserUpdation = inngest.createFunction(
-    {id: 'update-user-from-clerk'},
+    {id: 'Project-Management-update-user-from-clerk'},
     {event: 'clerk/user.updated'},
     async ({ event })=>{
         const {data} = event
